@@ -36,19 +36,19 @@
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
-            this.placaTextBox = new System.Windows.Forms.MaskedTextBox();
-            this.anoTextBox = new System.Windows.Forms.MaskedTextBox();
+            this.placaMaskedTextBox = new System.Windows.Forms.MaskedTextBox();
+            this.anoMaskedTextBox = new System.Windows.Forms.MaskedTextBox();
             this.marcaComboBox = new System.Windows.Forms.ComboBox();
             this.modeloComboBox = new System.Windows.Forms.ComboBox();
             this.cambioComboBox = new System.Windows.Forms.ComboBox();
             this.combustivelComboBox = new System.Windows.Forms.ComboBox();
             this.gravarButton = new System.Windows.Forms.Button();
             this.limparButton = new System.Windows.Forms.Button();
-            this.observacaoGroupBox = new System.Windows.Forms.GroupBox();
+            this.observacaoTextBox = new System.Windows.Forms.GroupBox();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.corComboBox = new System.Windows.Forms.ComboBox();
             this.veiculoErrorProvider = new System.Windows.Forms.ErrorProvider(this.components);
-            this.observacaoGroupBox.SuspendLayout();
+            this.observacaoTextBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.veiculoErrorProvider)).BeginInit();
             this.SuspendLayout();
             // 
@@ -129,25 +129,26 @@
             this.label7.TabIndex = 8;
             this.label7.Text = "Cor";
             // 
-            // placaTextBox
+            // placaMaskedTextBox
             // 
-            this.placaTextBox.Location = new System.Drawing.Point(112, 13);
-            this.placaTextBox.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
-            this.placaTextBox.Mask = ">LLL<-0000";
-            this.placaTextBox.Name = "placaTextBox";
-            this.placaTextBox.Size = new System.Drawing.Size(252, 26);
-            this.placaTextBox.TabIndex = 1;
-            this.placaTextBox.Tag = "*";
+            this.placaMaskedTextBox.Location = new System.Drawing.Point(112, 13);
+            this.placaMaskedTextBox.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
+            this.placaMaskedTextBox.Mask = ">LLL<-0000";
+            this.placaMaskedTextBox.Name = "placaMaskedTextBox";
+            this.placaMaskedTextBox.Size = new System.Drawing.Size(252, 26);
+            this.placaMaskedTextBox.TabIndex = 1;
+            this.placaMaskedTextBox.Tag = "*PLACA";
+            this.placaMaskedTextBox.TextMaskFormat = System.Windows.Forms.MaskFormat.ExcludePromptAndLiterals;
+            
+            // anoMaskedTextBox
             // 
-            // anoTextBox
-            // 
-            this.anoTextBox.Location = new System.Drawing.Point(112, 156);
-            this.anoTextBox.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
-            this.anoTextBox.Mask = "0000";
-            this.anoTextBox.Name = "anoTextBox";
-            this.anoTextBox.Size = new System.Drawing.Size(252, 26);
-            this.anoTextBox.TabIndex = 7;
-            this.anoTextBox.Tag = "*";
+            this.anoMaskedTextBox.Location = new System.Drawing.Point(112, 156);
+            this.anoMaskedTextBox.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
+            this.anoMaskedTextBox.Mask = "0000";
+            this.anoMaskedTextBox.Name = "anoMaskedTextBox";
+            this.anoMaskedTextBox.Size = new System.Drawing.Size(252, 26);
+            this.anoMaskedTextBox.TabIndex = 7;
+            this.anoMaskedTextBox.Tag = "*ANO";
             // 
             // marcaComboBox
             // 
@@ -212,16 +213,17 @@
             this.limparButton.TabIndex = 16;
             this.limparButton.Text = "Limpar";
             this.limparButton.UseVisualStyleBackColor = true;
+            this.limparButton.Click += new System.EventHandler(this.limparButton_Click);
             // 
-            // observacaoGroupBox
+            // observacaoTextBox
             // 
-            this.observacaoGroupBox.Controls.Add(this.textBox1);
-            this.observacaoGroupBox.Location = new System.Drawing.Point(12, 189);
-            this.observacaoGroupBox.Name = "observacaoGroupBox";
-            this.observacaoGroupBox.Size = new System.Drawing.Size(877, 141);
-            this.observacaoGroupBox.TabIndex = 14;
-            this.observacaoGroupBox.TabStop = false;
-            this.observacaoGroupBox.Text = "Obsertação (300)";
+            this.observacaoTextBox.Controls.Add(this.textBox1);
+            this.observacaoTextBox.Location = new System.Drawing.Point(12, 189);
+            this.observacaoTextBox.Name = "observacaoTextBox";
+            this.observacaoTextBox.Size = new System.Drawing.Size(877, 141);
+            this.observacaoTextBox.TabIndex = 14;
+            this.observacaoTextBox.TabStop = false;
+            this.observacaoTextBox.Text = "Observação (300)";
             // 
             // textBox1
             // 
@@ -252,15 +254,15 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(899, 339);
             this.Controls.Add(this.corComboBox);
-            this.Controls.Add(this.observacaoGroupBox);
+            this.Controls.Add(this.observacaoTextBox);
             this.Controls.Add(this.limparButton);
             this.Controls.Add(this.gravarButton);
             this.Controls.Add(this.cambioComboBox);
             this.Controls.Add(this.combustivelComboBox);
             this.Controls.Add(this.modeloComboBox);
             this.Controls.Add(this.marcaComboBox);
-            this.Controls.Add(this.anoTextBox);
-            this.Controls.Add(this.placaTextBox);
+            this.Controls.Add(this.anoMaskedTextBox);
+            this.Controls.Add(this.placaMaskedTextBox);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label7);
@@ -273,8 +275,8 @@
             this.Name = "VeiculoForm";
             this.Tag = "*";
             this.Text = "Cadastro de Veiculos";
-            this.observacaoGroupBox.ResumeLayout(false);
-            this.observacaoGroupBox.PerformLayout();
+            this.observacaoTextBox.ResumeLayout(false);
+            this.observacaoTextBox.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.veiculoErrorProvider)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -290,15 +292,15 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.MaskedTextBox placaTextBox;
-        private System.Windows.Forms.MaskedTextBox anoTextBox;
+        private System.Windows.Forms.MaskedTextBox placaMaskedTextBox;
+        private System.Windows.Forms.MaskedTextBox anoMaskedTextBox;
         private System.Windows.Forms.ComboBox marcaComboBox;
         private System.Windows.Forms.ComboBox modeloComboBox;
         private System.Windows.Forms.ComboBox cambioComboBox;
         private System.Windows.Forms.ComboBox combustivelComboBox;
         private System.Windows.Forms.Button gravarButton;
         private System.Windows.Forms.Button limparButton;
-        private System.Windows.Forms.GroupBox observacaoGroupBox;
+        private System.Windows.Forms.GroupBox observacaoTextBox;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.ComboBox corComboBox;
         private System.Windows.Forms.ErrorProvider veiculoErrorProvider;

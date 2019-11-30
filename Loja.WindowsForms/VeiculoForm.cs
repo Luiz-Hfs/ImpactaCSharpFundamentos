@@ -36,6 +36,7 @@ namespace Loja.WindowsForms
             corComboBox.SelectedIndex = -1;
 
             combustivelComboBox.DataSource = Enum.GetValues(typeof(Cambio));
+            cambioComboBox.DataSource = Enum.GetValues(typeof(Cambio));
             cambioComboBox.SelectedIndex = -1;
 
             combustivelComboBox.DataSource = Enum.GetValues(typeof(Combustivel));
@@ -63,11 +64,34 @@ namespace Loja.WindowsForms
             if (Formulario.Validar(this, veiculoErrorProvider))
             {
                 GravarVeiculo();
+                MessageBox.Show("Veículo gravado com sucesso!");
+                Formulario.Limpar(this);
+                placaMaskedTextBox.Focus();
             }
         }
 
         private void GravarVeiculo()
         {
+            var veiculo = new VeiculoPasseio();
+
+            veiculo.Ano = Convert.ToInt32(anoMaskedTextBox.Text);
+            veiculo.Cambio = (Cambio)cambioComboBox.SelectedItem;
+            veiculo.Carroceria = Carroceria.Hatch;
+            veiculo.Combustivel = (Combustivel)combustivelComboBox.SelectedItem;
+            veiculo.Cor = (Cor)corComboBox.SelectedItem;
+            veiculo.Modelo = (Modelo)modeloComboBox.SelectedItem;
+            veiculo.obervacao = observacaoTextBox.Text;
+            veiculo.Placa = placaMaskedTextBox.Text;
+
+            new VeiculoRepositorio().inserir(veiculo);
+
+        }
+
+       
+
+        private void limparButton_Click(object sender, EventArgs e)
+        {
+            Formulario.Limpar(this);
             
         }
     }

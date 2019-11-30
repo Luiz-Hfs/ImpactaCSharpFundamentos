@@ -9,9 +9,15 @@ using System.Xml.Linq;
 
 namespace Oficina.Repositorios.SistemaArquivos
 {
-    public class ModeloRepositorio
+    public class ModeloRepositorio : RepositorioBase
     {
-        private  XDocument arquivoXml = XDocument.Load(ConfigurationManager.AppSettings["caminhoArquivoModelo"]); //a classe ConfigurationManager para ler o arquivo de app.config / usar a biblioteca using System.Configuration;
+        private  XDocument arquivoXml; //a classe ConfigurationManager para ler o arquivo de app.config / usar a biblioteca using System.Configuration;
+
+        public ModeloRepositorio() : base("caminhoArquivoModelo")
+        {
+            arquivoXml = XDocument.Load(CaminhoArquivo);
+        }
+
         //o comando XDocument para manipular arquivos XML // Load serve para carregar arquivos em XML
 
         public List<Modelo> ObterPorMarca(int marcaId)//primeira linha de um metodo é chamado de assinatura do metodo

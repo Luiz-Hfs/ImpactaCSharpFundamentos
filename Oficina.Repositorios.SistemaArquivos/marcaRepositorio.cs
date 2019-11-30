@@ -9,15 +9,20 @@ using System.Threading.Tasks;
 
 namespace Oficina.Repositorios.SistemaArquivos
 {
-    public class MarcaRepositorio//public todos a soluçaõ pode ver | "private" ou internal que não é visivel por todos 
+    public class MarcaRepositorio : RepositorioBase//public todos a soluçaõ pode ver | "private" ou internal que não é visivel por todos e uma herança 
     {
-        private string caminhaArquivo = ConfigurationManager.AppSettings["caminhoArquivoMarca"]; //a classe ConfigurationManager para ler o arquivo de app.config / usar a biblioteca using System.Configuration;
+        //private string caminhaArquivo = ConfigurationManager.AppSettings["caminhoArquivoMarca"]; //a classe ConfigurationManager para ler o arquivo de app.config / usar a biblioteca using System.Configuration;
 
+        public MarcaRepositorio() : base("caminhoArquivoMarca")
+        {
+
+        }
+        //ToDo: OO - Polimorfismo por sobrecarga 
         public List<Marca> Obter()
         {
             var marcas = new List<Marca>();
 
-            foreach (var linha in File.ReadAllLines(caminhaArquivo))
+            foreach (var linha in File.ReadAllLines(CaminhoArquivo))
             {
                 if (string.IsNullOrEmpty(linha))// se a linha vier nula ou vazia vai para o proximo 
                 {
@@ -40,7 +45,7 @@ namespace Oficina.Repositorios.SistemaArquivos
         {
             Marca marca = null;
 
-            foreach (var linha in File.ReadAllLines(caminhaArquivo))
+            foreach (var linha in File.ReadAllLines(CaminhoArquivo))
             {
                 if (string.IsNullOrEmpty(linha))// se a linha vier nula ou vazia vai para o proximo 
                 {
