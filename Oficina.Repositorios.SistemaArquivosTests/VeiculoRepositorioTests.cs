@@ -18,7 +18,7 @@ namespace Oficina.Repositorios.SistemaArquivos.Tests
             var veiculo = new VeiculoPasseio();
 
             veiculo.Ano = 2014;
-            veiculo.Cambio = Cambio.Manuel;
+            veiculo.Cambio = Cambio.Manual;
             veiculo.Carroceria = Carroceria.Hatch;
             veiculo.Combustivel = Combustivel.Flex;
             veiculo.obervacao = "Completinho";
@@ -30,7 +30,7 @@ namespace Oficina.Repositorios.SistemaArquivos.Tests
 
             veiculo.Modelo = new ModeloRepositorio().Obter(1);
 
-            new VeiculoRepositorio().inserir(veiculo);
+            new VeiculoRepositorio().Inserir(veiculo);
 
         }      
     }

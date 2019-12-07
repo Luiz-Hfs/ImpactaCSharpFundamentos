@@ -21,7 +21,7 @@ namespace Oficina.Repositorios.SistemaArquivos
             arquivoXml = XDocument.Load(CaminhoArquivo);
         }
 
-        public void inserir<T>(T veiculo) where  T: Veiculo
+        public void Inserir<T>(T veiculo) where  T: Veiculo
         {
             var registro = new StringWriter();
             var serializador = new XmlSerializer(typeof(T));

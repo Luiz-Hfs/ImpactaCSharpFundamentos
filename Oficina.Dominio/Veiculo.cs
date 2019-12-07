@@ -8,8 +8,8 @@ namespace Oficina.Dominio
         //ToDo: OO - encapsulamento.
         private string placa;
         public string Placa {
-            get { return Placa.ToUpper(); }
-            set { Placa = value.ToUpper(); }
+            get { return placa.ToUpper(); }
+            set { placa = value.ToUpper(); }
         }
         public int Ano { get; set;}
         public Cor Cor{ get; set; }
