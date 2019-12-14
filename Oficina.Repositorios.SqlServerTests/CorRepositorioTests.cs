@@ -1,4 +1,5 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Oficina.Dominio;
 using Oficina.Repositorios.SqlServer;
 using System;
 using System.Collections.Generic;
@@ -28,6 +29,38 @@ namespace Oficina.Repositorios.SqlServer.Tests
         {
             Assert.IsTrue(repositorio.Ler(1).Nome == "Preto");
             Assert.IsNull(repositorio.Ler(0));
+        }
+
+        [TestMethod()]
+        public void SalvarTest()
+        {
+            var idRosa = repositorio.Salvar(new Cor { Nome = "Rosa" });
+            Assert.IsTrue(repositorio.Ler(idRosa).Nome == "Rosa");
+        }
+
+        [TestMethod()]
+        public void AtualizarTest()
+        {
+            var id = repositorio.Salvar(new Cor { Nome = "Magenta" });
+            var magenta = repositorio.Ler(id);
+
+            magenta.Nome = "Magenta Escura";
+            repositorio.Atualizar(magenta);
+
+            magenta = repositorio.Ler(id);
+
+            Assert.AreEqual(magenta.Nome, "Magenta Escura");
+            //Assert.IsTrue(magenta.Nome == "Magenta Escuro");
+
+
+
+        }
+
+        [TestMethod()]
+        public void ApagarTest()
+        {
+            repositorio.Apagar(10);
+            Assert.IsNull(repositorio.Ler(10));
         }
     }
 }
